@@ -87,7 +87,6 @@ shap==0.41.0
 shapely==2.0.2
 shiboken2==5.15.2.1
 six==1.15.0
-sklearn==0.0.post4
 spacy==3.7.4
 spacy-legacy==3.0.12
 spacy-loggers==1.0.5
