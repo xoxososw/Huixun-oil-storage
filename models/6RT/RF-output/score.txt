@@ -1,0 +1,7 @@
+Ñµ×¼£º1.0
+ÑµÕÙ£º1.0
+²â×¼£º1.0
+²âÕÙ: 1.0
+max_depth: 1
+max_leaf_nodes: 2
+min_samples_leaf: 8
