@@ -1,6 +1,6 @@
-Ñµ×¼£º0.84
+Ñµ×¼£º1.0
 ÑµÕÙ£º1.0
 ²â×¼£º1.0
 ²âÕÙ: 1.0
 max_depth: 1
-learnling-rate: 0.01
+learnling-rate: 0.08
