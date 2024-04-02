@@ -1,27 +1,28 @@
 import streamlit as st
 import pandas as pd
+from utils import *
 
 st.set_page_config(
     page_title="融合模型预测结果",
     page_icon="shield-check",
     layout="wide"
 )
-
+logo()
 # 初始化 session_state，如果已经初始化过，则不再重复初始化
 if 'model_selection' not in st.session_state:
     st.session_state['model_selection'] = None
 if 'model_name' not in st.session_state:
     st.session_state['model_name'] = None
-custom_css = """
-<style>
-.stApp {
-    margin-top: -55px; /* 负数值用于减少顶部空间 */
-}
-</style>
-"""
+# custom_css = """
+# <style>
+# .stApp {
+#     margin-top: -55px; /* 负数值用于减少顶部空间 */
+# }
+# </style>
+# """
 
 # 插入自定义 CSS
-st.markdown(custom_css, unsafe_allow_html=True)
+# st.markdown(custom_css, unsafe_allow_html=True)
 
 st.write("#### 这里是融合模型预测结果页面 👋")
 
@@ -103,7 +104,9 @@ if daochu_button and option1 is not None:
     show_daochu_result()
     data_path = 'modelce/6RT/merge-result/合并预测结果.csv'
     # 读取 CSV 文件为 DataFrame
+
     data = pd.read_csv(data_path)
+    data.drop(columns='cellid', inplace=True)
 
 
     # 自定义样式函数，用于同时加粗最后一列并突出显示每列的最大值

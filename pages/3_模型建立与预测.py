@@ -2,7 +2,15 @@ import streamlit as st
 import pandas as pd
 import os
 import subprocess
-
+from utils import *
+# 页面配置和自定义 CSS
+st.set_page_config(page_title="模型建立与预测", page_icon="💻", layout="wide")
+# custom_css = """
+# <style>
+# .stApp {margin-top: -55px;} /* 负数值用于减少顶部空间 */
+# </style>
+# """
+logo()
 def main_page():
     st.write("#### 这里是模型建立与预测页面 👋")
 
@@ -61,14 +69,8 @@ def main_page():
         # colll.button('下载已训练的模型pkl文件', key=f"download_button")
 
 
-# 页面配置和自定义 CSS
-st.set_page_config(page_title="模型建立与预测", page_icon="💻", layout="wide")
-custom_css = """
-<style>
-.stApp {margin-top: -55px;} /* 负数值用于减少顶部空间 */
-</style>
-"""
-st.markdown(custom_css, unsafe_allow_html=True)
+
+# st.markdown(custom_css, unsafe_allow_html=True)
 
 # 侧边栏模型选择
 model_options = ["#### AdaBoost模型", "#### GBDT模型","#### 随机森林模型", "#### XGBoost模型"]

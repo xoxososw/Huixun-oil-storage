@@ -1,4 +1,5 @@
 import subprocess
+from utils import *
 
 import pandas as pd
 import streamlit as st
@@ -8,15 +9,16 @@ st.set_page_config(
     page_icon="📊",
     layout="wide"
 )
-custom_css = """
-<style>
-.stApp {
-    margin-top: -55px; /* 负数值用于减少顶部空间 */
-}
-</style>
-"""
+# custom_css = """
+# <style>
+# .stApp {
+#     margin-top: -55px; /* 负数值用于减少顶部空间 */
+# }
+# </style>
+# """
+logo()
 # 插入自定义 CSS
-st.markdown(custom_css, unsafe_allow_html=True)
+# st.markdown(custom_css, unsafe_allow_html=True)
 st.write("### 📊  关联分析 ")
 # st.write("###### one：选择建模所用数据")
 
@@ -35,7 +37,7 @@ for file in os.listdir(data_folder):
 selected_tables = st.selectbox('选择要显示的表格：', list(tables.keys()),index=None)
 # 根据用户的选择，展示对应的表格
 # for table_name in selected_tables:
-c1, c2= st.columns([1.5, 1])
+c1, c2= st.columns([1, 1])
 if selected_tables == "地质参数参数关联分析结果":
     with c1:
         st.write(f'#### {selected_tables}')
@@ -46,7 +48,7 @@ if selected_tables == "地质参数参数关联分析结果":
         st.write("")
 
         st.image('./关联分析表/地质/小层参数分布情况.png', caption='小层参数分布情况', width=500)
-a1, a2= st.columns([1, 1.5])
+a1, a2= st.columns([1.2, 1.5])
 if selected_tables == "小层测井参数分布集中区间":
     with a1:
         st.write(f'#### {selected_tables}')
@@ -56,7 +58,7 @@ if selected_tables == "小层测井参数分布集中区间":
         st.write("")
         st.write("")
         st.image('./关联分析表/测井/参数分布统计.png', caption='参数分布统计', width=500)
-b1, b2= st.columns([1, 1])
+b1, b2= st.columns([1, 1.2])
 if selected_tables == "测井参数含油性关系分析":
     with b1:
         st.write(f'#### {selected_tables}')
@@ -96,4 +98,3 @@ with f1:
 # if huaxiang_button:
 st.image('./聚类分析结果/小层数据画像1.png', caption='小层数据画像1', width=800)
 st.image('./聚类分析结果/小层数据画像2.png', caption='小层数据画像2', width=800)
-st.image('./聚类分析结果/小层聚类分析结果.png', caption='小层聚类分析结果', width=800)

@@ -1,24 +1,25 @@
 import streamlit as st
+from utils import *
 
 st.set_page_config(
     page_title="潜力层识别",
     page_icon="shield-check",
     layout="wide"
 )
-
-custom_css = """
-<style>
-.stApp {
-    margin-top: -55px; /* 负数值用于减少顶部空间 */
-}
-</style>
-"""
+logo()
+# custom_css = """
+# <style>
+# .stApp {
+#     margin-top: -55px; /* 负数值用于减少顶部空间 */
+# }
+# </style>
+# """
 # 设置文本框的样式
 text_area_style = {
     'font-size': '20px'  # 设置字体大小为20像素
 }
 # 插入自定义 CSS
-st.markdown(custom_css, unsafe_allow_html=True)
+# st.markdown(custom_css, unsafe_allow_html=True)
 
 st.write("#### 这里是潜力层识别页面 👋")
 

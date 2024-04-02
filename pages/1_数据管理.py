@@ -6,12 +6,15 @@ from io import BytesIO
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-
+from utils import *
 st.set_page_config(
     page_title="数据管理",
     page_icon="graph-up-arrow",
     layout="wide"
 )
+logo()
+
+
 
 st.write("#### 这里是数据管理页面 👋")
 file_path=[]
@@ -113,6 +116,7 @@ if selected_page== "#### 多源数据融合":
     # 根据用户的选择，展示对应的表格
     for table_name in selected_tables:
         st.write(f'## {table_name}')
+        f=tables[table_name].drop(columns='cellid', inplace=True)
         st.dataframe(tables[table_name])
 if selected_page== "#### 数据查看":
     if uploaded_file:
@@ -136,6 +140,7 @@ if selected_page== "#### 数据查看":
             selected_file_1 = st.selectbox("选择文件", os.listdir(file_path[0]))
             if selected_file_1:
                 df = pd.read_csv(os.path.join(file_path[0], selected_file_1))
+                df['井号'] = range(0, len(df))
                 st.dataframe(df)
 
         # 在第一行第二列中添加选择器和数据展示
@@ -144,15 +149,29 @@ if selected_page== "#### 数据查看":
             selected_file_2 = st.selectbox("选择文件", os.listdir(file_path[1]))
             if selected_file_2:
                 df = pd.read_csv(os.path.join(file_path[1], selected_file_2))
+                df['JH'] = range(0, len(df))
                 st.dataframe(df)
 
         # 在第二行第一列中添加选择器和数据展示
         with row2_col1:
             st.header("测井数据")
-            selected_file_3 = st.selectbox("选择文件", os.listdir(file_path[2]))
-            if selected_file_3:
-                df = pd.read_csv(os.path.join(file_path[2], selected_file_3))
-                st.dataframe(df)
+            file_dir = file_path[2]  # 文件夹路径
+            txt_files = []  # 用于存储所有.txt文件的列表
+            # 遍历文件夹及其子文件夹
+            for root, dirs, files in os.walk(file_dir):
+                for file in files:
+                    if file.endswith('.txt'):
+                        txt_files.append(os.path.join(root, file))  # 将完整文件路径添加到列表中
+            # 如果找到.txt文件
+            if txt_files:
+                # 创建简化文件名到原始文件路径的映射
+                file_mapping = {f"{index + 1}.txt": file for index, file in enumerate(txt_files)}
+                # 使用简化文件名在selectbox中
+                selected_file_name = st.selectbox("选择文件", list(file_mapping.keys()))
+                if selected_file_name:
+                    selected_file_path = file_mapping[selected_file_name]  # 通过映射获取完整文件路径
+                    df = pd.read_csv(selected_file_path, sep='\t')  # 读取文件
+                    st.dataframe(df)  # 显示数据
 
         # 在第二行第二列中添加选择器和数据展示
         with row2_col2:
@@ -160,6 +179,8 @@ if selected_page== "#### 数据查看":
             selected_file_4 = st.selectbox("选择文件", os.listdir(file_path[3]))
             if selected_file_4:
                 df = pd.read_csv(os.path.join(file_path[3], selected_file_4))
+                df['井号'] = range(0, len(df))
                 st.dataframe(df)
+
     else:
         st.write('没有上传文件，请选择文件进行上传')
