@@ -25,7 +25,7 @@ def get_file_list(suffix, path):
                 input_template_all_path.append(os.path.join(root, name))
     return input_template_all, input_template_all_path
 
-upload_dir = "./data1"
+upload_dir = "./data"
 os.makedirs(upload_dir, exist_ok=True)
 
 uploaded_file = st.sidebar.file_uploader("Upload a zip file", type="zip")
