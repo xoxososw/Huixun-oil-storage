@@ -25,7 +25,6 @@ cgen==2020.1
 click==8.1.7
 cloudpathlib==0.15.1
 cloudpickle==2.2.1
-clyent==1.2.2
 cmocean==3.0.3
 conda-build==3.23.3
 conda-repo-cli==1.0.27
