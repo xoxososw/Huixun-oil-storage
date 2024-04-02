@@ -1,5 +1,5 @@
 
-
+streamlit_extras==0.4.0
 blis==0.7.11
 config==0.5.1
 jupyter-telemetry==0.1.0
