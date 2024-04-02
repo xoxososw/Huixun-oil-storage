@@ -337,7 +337,7 @@ def txt2pd(fpath,outpath):
                     temp_global =temp
 
             temp = temp_global.split('\n')[1:]
-            print(len(temp))
+            # print(len(temp))
             # print(temp[1:10])
             count = 0
             for line in temp:
@@ -359,20 +359,22 @@ def txt2pd(fpath,outpath):
 
             df = pd.DataFrame(data=temp2,columns=list(columns))
 
-            # try:
-            #     df = pd.read_csv(path,encoding="utf_8_sig", sep='\s+', skiprows=6)
-            # except:
-            #     df = pd.read_csv(path, encoding="gbk", sep='\s+', skiprows=6)
-            # df.rename(columns={"#DEPTH": "DEPTH"}, inplace=True)
+            try:
+                df = pd.read_csv(path,encoding="utf_8_sig", sep='\s+')
+            except:
+                df = pd.read_csv(path, encoding="gbk", sep='\s+')
 
-            o_t=os.path.join(outpath,f1)#输出路径+子目录
-            print(f1)
-            if os.path.exists(o_t):
-                o_path=os.path.join(o_t,fname)#输出路径+子目录+文件名称
-            else:
-                os.mkdir(o_t)#如果没有子文件夹则先行创建
-                o_path = os.path.join(o_t, fname)  # 输出路径+子目录+文件名称
-            df.to_csv(o_path, encoding='utf_8_sig',sep=',',index=False)
+            df.rename(columns={"#DEPTH": "DEPTH"}, inplace=True)
+            o_path = os.path.join(outpath, f1 + '.csv')
+            df.to_csv(o_path, encoding='utf_8_sig', sep='，', index=False)
+            # o_t=os.path.join(outpath,f1)#输出路径+子目录
+            # print(f1)
+            # if os.path.exists(o_t):
+            #     o_path=os.path.join(o_t,fname)#输出路径+子目录+文件名称
+            # else:
+            #     os.mkdir(o_t)#如果没有子文件夹则先行创建
+            #     o_path = os.path.join(o_t, fname)  # 输出路径+子目录+文件名称
+            # df.to_csv(o_path, encoding='utf_8_sig',sep=',',index=False)
 def extract(path):
     # 从指定路径下读取txt
     file = open(path)
@@ -1149,10 +1151,10 @@ def main2(path1,path2,path3,path4):
     layer_p=path+'\\小层与录井数据融合\\小层与录井融合训练数据.csv'
     layer_p1=path+'\\小层与录井数据融合\\小层与录井融合测试数据.csv'
     out_p1=path+'\\out_put_1\\' #txt转csv后的存储路径
-    # txt2pd(fp,out_p1)
-#     # '''
-#     # 提取测井数据
-#     # '''
+    txt2pd(fp,out_p1)
+    # '''
+    # 提取测井数据
+    # '''
     # txt2merge_csv(fp,out_p1)
     print('已成功：提取测井数据\n')
     # '''
@@ -1274,7 +1276,7 @@ def main2(path1,path2,path3,path4):
 path=os.getcwd()
 path1=path+"\\data\\小层数据\\"
 path2=path+"\\data\\生产数据\\"
-# payh3=path+"data\\测井数据"
+# path3=path+"data\\测井数据"
 path3=path+"\\data\\录井数据\\"
 filename1=os.listdir(path1)[0]
 filename2=os.listdir(path2)[0]
