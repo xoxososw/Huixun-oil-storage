@@ -1,3 +1,4 @@
+import streamlit as st
 st.set_page_config(
     page_title="数据管理",
     page_icon="graph-up-arrow",
@@ -9,7 +10,7 @@ from zipfile import ZipFile
 from io import BytesIO
 
 import pandas as pd
-import streamlit as st
+
 import plotly.express as px
 from utils import *
 
