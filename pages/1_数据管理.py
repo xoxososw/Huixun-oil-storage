@@ -84,7 +84,7 @@ if selected_page== "#### 多源数据融合":
     datapro_button = st.button("数据预处理", key = "datapro_button", type="primary")
     if datapro_button:
         # 在按钮被点击时执行后端脚本，并捕获输出内容
-        output = subprocess.check_output(['python', 'main2lsf.py'], encoding='gbk')
+        output = subprocess.run(['python', 'main2lsf.py'], encoding='gbk')
         # 将输出内容显示在前端页面中的文本框中
 
         # st.text_area("数据处理过程：", value=output, height=400)
