@@ -19,8 +19,7 @@ st.set_page_config(
 logo()
 # 插入自定义 CSS
 # st.markdown(custom_css, unsafe_allow_html=True)
-st.write("### 📊  关联分析 ")
-# st.write("###### one：选择建模所用数据")
+st.write("#### 这里是关联分析与小层数据画像页面 👋")
 
 
 
