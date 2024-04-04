@@ -6,15 +6,8 @@ st.set_page_config(
     page_icon="graph-up-arrow",
     layout="wide"
 )
-custom_css = """
-<style>
-.stApp {
-    margin-top: -55px; /* 负数值用于减少顶部空间 */
-}
-</style>
-"""
-# 插入自定义 CSS
-st.markdown(custom_css, unsafe_allow_html=True)
+from utils import *
+logo()
 st.write("#### 这里是关联分析与特征提取页面 👋")
 st.write("###### one：选择建模所用数据")
 
