@@ -27,7 +27,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 import lgis,Random_ForestCX,svm,gbdtCX,xgbstCX,adaboostCX
-import lgis,Random_ForestSJHF,svm,gbdtSJHF,xgbstSJHF,adaboostSJHF,mlp_class2
+import lgis,Random_ForestSJHF,svm,gbdtSJHF,xgbstSJHF,adaboostSJHF
 gbk="gb2312"
 utf='utf_8_sig'
 # 计算不对称的KL散度
