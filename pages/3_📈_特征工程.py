@@ -17,7 +17,7 @@ logo()
 # """
 # # 插入自定义 CSS
 # st.markdown(custom_css, unsafe_allow_html=True)
-st.write("#### 这里是关联分析与特征提取页面 👋")
+st.write("#### 这里是特征工程页面 👋")
 st.write("###### one：选择建模所用数据")
 
 # 获取指定目录下的所有文件
